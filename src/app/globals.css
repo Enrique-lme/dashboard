@@ -1,0 +1,55 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ====== CSS Variables: Light Theme ====== */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #f4f4f5;
+  --card-foreground: #000000;
+  --muted: #f4f4f5;
+  --muted-foreground: #444444;
+  --border: rgba(0, 0, 0, 0.15);
+  --input: #e4e4e7;
+  --ring: rgba(0, 0, 0, 0.1);
+}
+
+/* ====== CSS Variables: Dark Theme ====== */
+.dark {
+  --background: #0e0e10;
+  --foreground: #ffffff;
+  --card: rgba(20, 20, 23, 0.6);
+  --card-foreground: #ffffff;
+  --muted: #1c1c1f;
+  --muted-foreground: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.15);
+  --input: rgba(26, 26, 29, 0.6);
+  --ring: rgba(58, 58, 61, 0.7);
+}
+
+/* ====== Base Styles ====== */
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* ====== Custom Utility Classes ====== */
+@layer utilities {
+  .bg-glass {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+  }
+
+  .shadow-glass {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+}
