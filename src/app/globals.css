@@ -1,34 +1,32 @@
+/* === Tailwind Base Imports === */
 @import "tailwindcss/preflight";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* ====== CSS Variables: Light Theme ====== */
+/* === Farbvariablen (CSS Custom Properties) === */
 :root {
   --background: #ffffff;
   --foreground: #000000;
-  --card: #f4f4f5;
+  --muted: #f4f4f4;
+  --muted-foreground: #666666;
+  --card: #ffffff;
   --card-foreground: #000000;
-  --muted: #f4f4f5;
-  --muted-foreground: #444444;
-  --border: rgba(0, 0, 0, 0.15);
-  --input: #e4e4e7;
-  --ring: rgba(0, 0, 0, 0.1);
+  --border: #e5e5e5;
+  --input: #e5e5e5;
 }
 
-/* ====== CSS Variables: Dark Theme ====== */
-.dark {
-  --background: #0e0e10;
+[data-theme="dark"] {
+  --background: #0f0f0f;
   --foreground: #ffffff;
-  --card: rgba(20, 20, 23, 0.6);
+  --muted: #1a1a1a;
+  --muted-foreground: #888888;
+  --card: #181818;
   --card-foreground: #ffffff;
-  --muted: #1c1c1f;
-  --muted-foreground: #a1a1aa;
-  --border: rgba(255, 255, 255, 0.15);
-  --input: rgba(26, 26, 29, 0.6);
-  --ring: rgba(58, 58, 61, 0.7);
+  --border: #2a2a2a;
+  --input: #2a2a2a;
 }
 
-/* ====== Base Styles ====== */
+/* === Global Styles === */
 html, body {
   background-color: var(--background);
   color: var(--foreground);
@@ -36,9 +34,10 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: system-ui, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* ====== Custom Utility Classes ====== */
+/* === Utility Extensions === */
 @layer utilities {
   .bg-glass {
     background-color: rgba(0, 0, 0, 0.3);
@@ -51,5 +50,21 @@ html, body {
 
   .text-muted-foreground {
     color: var(--muted-foreground);
+  }
+
+  .bg-muted {
+    background-color: var(--muted);
+  }
+
+  .text-foreground {
+    color: var(--foreground);
+  }
+
+  .bg-background {
+    background-color: var(--background);
+  }
+
+  .border-border {
+    border-color: var(--border);
   }
 }

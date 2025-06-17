@@ -1,12 +1,20 @@
-import { ThemeProvider } from '@/context/ThemeContext'
-import '@/styles/globals.css' // ← wichtig, sonst keine Tailwind-Styles
+import "@/styles/globals.css";
+import { ReactNode } from "react";
+import { ThemeProvider } from "@/context/ThemeContext";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata = {
+  title: "Nextprozess",
+  description: "Modernes Dashboard",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="de" suppressHydrationWarning>
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
-    </html>
-  )
+  <body className="bg-background text-foreground">
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
+  </body>
+</html>
+  );
 }
