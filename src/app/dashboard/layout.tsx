@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react'
 import { createClient } from '@/utils/supabase/server'
 import ClientLayout from '@/components/dashboard/ClientLayout'

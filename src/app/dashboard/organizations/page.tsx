@@ -32,41 +32,60 @@ export default async function OrganizationOverviewPage() {
     return <div className="p-6">Fehler beim Laden der Organisationen.</div>
   }
 
-  // TypeScript zwingen, diesen Typ zu akzeptieren
   const organizations = data as unknown as OrganizationUser[]
 
   return (
     <div className="p-6">
+      {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Organisationen</h1>
+        <h1 className="text-2xl font-semibold text-foreground">Organisationen</h1>
         <Link
           href="/dashboard/organizations/new"
-          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+          className="bg-card-foreground text-card px-4 py-2 rounded-lg shadow hover:shadow-md transition"
         >
           + Neue Organisation anlegen
         </Link>
       </div>
 
+      {/* Grid mit responsiven Spalten */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {organizations.map((entry) => (
-    <Link
-      key={entry.organization.id}
-      href={`/dashboard/organizations/${entry.organization.id}`}
-      className="group rounded-xl border border-[#2a2a2d] bg-[#151517] p-5 transition hover:border-[#4C5FD5] hover:bg-[#1c1c1f]"
-    >
-      <h2 className="text-lg font-semibold text-white group-hover:text-[#4C5FD5] mb-1">
-        {entry.organization.name}
-      </h2>
-      <p className="text-sm text-gray-400 mb-1 break-all">
-        ID: {entry.organization.id}
-      </p>
-      <p className="text-sm text-gray-500">
-        Erstellt am:{' '}
-        {new Date(entry.organization.created_at).toLocaleDateString()}
-      </p>
-    </Link>
-  ))}
-</div>
+        {organizations.map(({ organization }) => (
+          <Link
+            key={organization.id}
+            href={`/dashboard/organizations/${organization.id}`}
+            className="
+              group block rounded-2xl 
+              border border-border 
+              bg-card 
+              p-6 
+              shadow 
+              transition 
+              hover:border-foreground 
+              hover:bg-card-foreground/5
+            "
+          >
+            {/* Name */}
+            <h2 className="
+              text-lg font-semibold text-foreground 
+              group-hover:text-primary 
+              mb-2
+            ">
+              {organization.name}
+            </h2>
+
+            {/* ID */}
+            <p className="text-sm text-muted-foreground mb-1 break-all">
+              ID: {organization.id}
+            </p>
+
+            {/* Datum */}
+            <p className="text-sm text-muted-foreground">
+              Erstellt am:{' '}
+              {new Date(organization.created_at).toLocaleDateString()}
+            </p>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
